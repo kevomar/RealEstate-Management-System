@@ -48,46 +48,54 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
-   
-<div class="form-container">
+<style>
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+</style>
 
-   <form action="" method="post" enctype="multipart/form-data">
-      <h3>register now</h3>
-      <!--<?php
+<body>
+
+    <div class="form-container">
+
+        <form action="" method="post" enctype="multipart/form-data">
+            <h3>register now</h3>
+            <!--<?php
       if(isset($message)){
          foreach($message as $message){
             echo '<div class="message">'.$message.'</div>';
          }
       }
       ?>-->
-      <input type="hidden" name="uid" id="uid" class="box" required >
-      <input type="email" name="email" id="email" placeholder="enter email" class="box" required>
-      <input type="text" name="firstname" id="firstname" placeholder="enter first name" class="box" required>
-      <input type="text" name="lastname" id="lastname" placeholder="enter last name" class="box" required>
-      <input type="tel" name="phonenumber" id="phonenumber" placeholder="enter phone number" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" class="box" required>
-      <input type="file" name="image" id="image" class="box" accept="image/jpg, image/jpeg, image/png">
-      <input type="password" name="password" id="password" placeholder="enter password" class="box" required>
-      <input type="password" name="cpassword" placeholder="confirm password" class="box" required>
-      <p>What is your gender?</p>
-      <input type="radio" name="gender" value="male"  required>Male
-      <input type="radio" name="gender" value="female"  required>Female
-      <input type="date" name="Dob" id="Dob" placeholder="enter date of birth" class="box" required>
-      <input type="submit" name="submit" value="register now" class="btn">
-      <p>already have an account? <a href="loginform.php">login now</a></p>
-   </form>
+            <input type="hidden" name="uid" id="uid" class="box" required>
+            <input type="email" name="email" id="email" placeholder="enter email" class="box" required>
+            <input type="text" name="firstname" id="firstname" placeholder="enter first name" class="box" required>
+            <input type="text" name="lastname" id="lastname" placeholder="enter last name" class="box" required>
+            <input type="tel" name="phonenumber" id="phonenumber" placeholder="enter phone number" class="box" required>
+            <input type="file" name="image" id="image" class="box" accept="image/jpg, image/jpeg, image/png">
+            <input type="password" name="password" id="password" placeholder="enter password" class="box" required>
+            <input type="password" name="cpassword" placeholder="confirm password" class="box" required>
+            <p>gender</p>
+            <input type="radio" name="gender" value="male" required>Male
+            <input type="radio" name="gender" value="female" required>Female
+            <input type="date" name="Dob" id="Dob" placeholder="enter date of birth" class="box" required>
+            <input type="submit" name="submit" value="register now" class="btn">
+            <p>already have an account? <a href="loginform.php">login now</a></p>
+        </form>
 
-</div>
+    </div>
 
 </body>
+
 </html>

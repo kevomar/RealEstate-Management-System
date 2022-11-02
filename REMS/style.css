@@ -1,0 +1,64 @@
+body {
+    min-width: 100vw;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    min-height: 100vh;
+    margin: 0;
+    margin-right: 0;
+    min-width: 100vw;
+}
+
+.content {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-section {
+    width: 15%;
+    background-color: #f1f1f1;
+    border-right: solid 2px #827282;
+}
+
+.right-section {
+    width: 85%;
+    background-color: #f1f1f1;
+}
+
+.btn-grp {
+    display: block;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    min-width: 2.5em;
+    width: 100%;
+}
+
+.btn>a {
+    color: white;
+    text-decoration: none;
+    width: 100%;
+
+}
+
+.card {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    width: 75%;
+    text-align: center;
+    box-shadow: 10px 10px 5px #888888;
+
+}
+
+.centre {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: solid 1px red;
+}

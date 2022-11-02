@@ -6,76 +6,46 @@
 <?php
 
 include 'config.php';
-if (isset($_POST['add_booking'])) {
-    $getuser_ids = "SELECT u_id FROM users";
-    $run_user_ids = mysqli_query($conn, $getuser_ids);
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    $getname = "SELECT u_firstname, u_lastname FROM `users` WHERE u_id = '$user_id'";
+    $result = mysqli_query($conn, $getname);
+    $row = mysqli_fetch_assoc($result);
+    $name = $row['u_firstname'] . " " . $row['u_lastname'];
 
 
+    $pr_id = $_GET['pr_id'];
+    $getproperty = "SELECT pr_name,ld_id FROM `property` WHERE pr_id = '$pr_id'";
+    $result2 = mysqli_query($conn, $getproperty);
+    $fetch2 = mysqli_fetch_assoc($result2);
+    $ld_id = $fetch2['ld_id'];
 
-    $getproperty_ids = "SELECT pr_id FROM property";
-    $run_property_ids = mysqli_query($conn, $getproperty_ids);
-
-    $getlandlord_ids = "SELECT ld_id FROM landlords";
+    $getlandlord_ids = "SELECT ld_firstname,ld_lastname FROM landlords WHERE ld_id = '$ld_id'";
     $run_landlord_ids = mysqli_query($conn, $getlandlord_ids);
+    $fetch_landlord_ids = mysqli_fetch_assoc($run_landlord_ids);
+    $landlord_name = $fetch_landlord_ids['ld_firstname'] . " " . $fetch_landlord_ids['ld_lastname'];
 ?>
 <div>
     <form action="" method="post">
         <div class="form-group">
-            <label for="user" class="form-label">User Id</label>
-            <php>
-                <select name="user" id="user" class="form-control">
-                    <option value="n/a">Select User</option>
-                    <?php
-                        if (mysqli_num_rows($run_user_ids) > 0) {
-                            while ($row = mysqli_fetch_array($run_user_ids)) {
-                                echo "<option value='" . $row['u_id'] . "'>" . $row['u_id'] . "</option>";
-                            }
-                        }
-                        ?>
-                </select>
-            </php>
+            <label for="user" class="form-label">name</label>
+            <input type="text" class="form-control" name="user" value="<?php echo $name; ?>" readonly>
         </div>
         <div class="form-group">
-            <label for="property" class="form-label">Property Id</label>
-            <select name="property" id="property" class="form-control">
-                <option value="0">Select Property</option>
-                <?php
-                    if (mysqli_num_rows($run_property_ids) > 0) {
-                        while ($row = mysqli_fetch_array($run_property_ids)) {
-                            echo "<option value='" . $row['pr_id'] . "'>" . $row['pr_id'] . "</option>";
-                        }
-                    }
-                    ?>
-            </select>
+            <label for="property" class="form-label">property</label>
+            <input type="text" class="form-control" name="property" value="<?php echo $fetch2['pr_name']; ?>" readonly>
         </div>
         <div class="form-group">
-            <label for="landlord" class="form-label">Landlord Id</label>
-            <select class="form-control" id="landlord" name="landlord">
-                <option value="0">Select Landlord</option>
-                <?php
-                    if (mysqli_num_rows($run_landlord_ids) > 0) {
-                        while ($row = mysqli_fetch_array($run_landlord_ids)) {
-                            echo "<option value='" . $row['ld_id'] . "'>" . $row['ld_id'] . "</option>";
-                        }
-                    }
-                    ?>
-            </select>
+            <label for="landlord" class="form-label">landlord</label>
+            <input type="text" class="form-control" name="landlord" value="<?php echo $landlord_name; ?>" readonly>
         </div>
         <div class="form-group">
-            <label for="checkinDate" class="form-label">Checkin Date</label>
-            <input type="date" class="form-control" name="checkinDate">
+            <label for="Checkin" class="form-label">Checkin Date</label>
+            <input type="date" class="form-control" name="Checkin">
         </div>
         <div class="form-group">
-            <label for="checkoutDate" class="form-label">Checkout Date</label>
-            <input type="date" name="checkoutDate" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="status " class="form-label">Status</label>
-            <select class="form-control" name="status" id="status" class="form-control">
-                <option value="1">Pending</option>
-                <option value="2">Approved</option>
-                <option value="0">Available</option>
-            </select>
+            <label for="Checkout" class="form-label">Checkout Date</label>
+            <input type="date" class="form-control" name="Checkout">
         </div>
         <div class="form-group" style="margin-top: 1em;">
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
@@ -83,23 +53,35 @@ if (isset($_POST['add_booking'])) {
     </form>
 </div>
 <?php
-}
+
 
 if (isset($_POST['submit'])) {
     $user = $_POST['user'];
     $property = $_POST['property'];
     $landlord = $_POST['landlord'];
-    $checkinDate = $_POST['checkinDate'];
-    $checkoutDate = $_POST['checkoutDate'];
+    $checkin = $_POST['Checkin'];
+    $checkout = $_POST['Checkout'];
     $status = $_POST['status'];
 
-    $insert_booking = "INSERT INTO bookings (u_id, pr_id, ld_id, checkin, checkout, status) VALUES ('$user', '$property', '$landlord', '$checkinDate', '$checkoutDate', '$status')";
-    $run_insert_booking = mysqli_query($conn, $insert_booking);
+    //check if booking already exists
+    $check_booking = "SELECT * FROM `bookings` WHERE u_id = '$user_id' AND pr_id = '$pr_id' AND ld_id = '$ld_id'";
+    $run_check_booking = mysqli_query($conn, $check_booking);
+    $booking = mysqli_fetch_assoc($run_check_booking);
+    $date = $booking['checkin'];
+    $count = mysqli_num_rows($run_check_booking);
+    if($count > 0){
+        echo "<script>alert('Booking already scheduled for $date')</script>";
+        echo "<script>window.open('adminpage.php?viewproperties','_self')</script>";
+    }
 
-    if ($run_insert_booking) {
-        echo "<script>alert('Booking has been inserted!')</script>";
-        echo "<script>window.open('index.php?view_booking', '_self')</script>";
+    $insert_booking = "INSERT INTO bookings (u_id, pr_id, ld_id, checkin, checkout,status) VALUES ('$user_id', '$pr_id', '$ld_id', '$checkin','$checkout', 0)";
+    $run_appointment = mysqli_query($conn, $insert_booking);
+
+    if ($run_appointment) {
+        echo "<script>alert('House has been booked!')</script>";
+        echo "<script>window.open('adminpage.php', '_self')</script>";
     }
 }
+
 
 ?>

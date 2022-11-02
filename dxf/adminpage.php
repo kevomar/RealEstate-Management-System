@@ -1,9 +1,16 @@
+<style>
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+</style>
+
 <?php 
 session_start();
 
 include("navbar.php");
 
  ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,31 +26,51 @@ include("navbar.php");
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Admin</h1>
-        </div>
-        <div class="content">
-            <div class="left-section">
-				<button class="btn btn-primary btn-grp">
-                    <a href="#">Account Overview</a>
-                </button>
-                <button class="btn btn-primary btn-grp">
-                    <a href="adminpage.php?update">Edit Profile</a>
-                </button>
-                <button class="btn btn-primary btn-grp" name="add_appointment" >
-                    <a href="adminpage.php?appointments">Make appointment</a>
-                </button>
-                <button class="btn btn-primary btn-grp" name="add_appointment" >
-                    <a href="adminpage.php?bookings">Make booking</a>
-                </button>
-                <button class="btn btn-primary btn-grp">
-                    <a href="adminpage.php?viewproperties">View Propeties</a>
-                </button>
-                
-                
-                <a href="adminpage.php?payments"><button class="btn btn-primary btn-grp">Payments</button></a>
-                
+
+    <style>
+    .listings {
+        background-color: transparent;
+        border: none;
+        color: black;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 100%;
+        height: 5vh;
+
+    }
+
+    .listings:hover {
+        background-color: #fe98fe;
+    }
+    </style>
+    <div class="container" style="margin-top: 0;">
+        <div class=" content" style="margin-top: 0;">
+            <div class="left-section" style="display: flex; flex-direction: column; text-align: center;">
+
+                <a href="adminpage.php?dashboard">
+                    <button class="listings">Dashboard
+                    </button>
+                </a>
+
+
+                <a href="adminpage.php?update">
+                    <button class="listings">Edit Profile
+                    </button>
+                </a>
+
+
+                <a href="adminpage.php?viewproperties">
+                    <button class="listings">View Propeties
+                    </button>
+                </a>
+
+
+
+                <a href="adminpage.php?payments">
+                    <button class="listings">Payments
+                    </button>
+                </a>
+
 
             </div>
             <div class="right-section table-responsive">
@@ -51,16 +78,22 @@ include("navbar.php");
                 if (isset($_GET['update'])) {
                     include 'updateprofile.php';
                 }
-                if (isset($_GET['bookings'])) {
+                elseif (isset($_GET['bookings'])) {
                     include 'bookings.php';
                 }
-				if (isset($_GET['appointments'])) {
-                    include 'appointments.php';
+				elseif (isset($_GET['makeappointments'])) {
+                    include 'makeappointments.php';
                 }
-                if (isset($_GET['payments'])) {
+                elseif (isset($_GET['payments'])) {
                     include 'payments.php';
                 }
-                if (isset($_GET['dashboard'])) {
+                elseif (isset($_GET['dashboard'])) {
+                    include 'dashboard.php';
+                }
+                elseif(isset($_GET['viewproperties'])){
+                    include 'viewproperties.php';
+                }
+                else {
                     include 'dashboard.php';
                 }
                 ?>

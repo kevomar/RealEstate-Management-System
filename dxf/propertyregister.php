@@ -46,47 +46,57 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>registerproperty</title>
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registerproperty</title>
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
-   
-<div class="form-container">
 
-   <form action="" method="post" enctype="multipart/form-data">
-      <h3>register now</h3>
-      <!--<?php
+<body>
+
+    <div class="form-container">
+
+        <form action="" method="post" enctype="multipart/form-data">
+            <h3>register now</h3>
+            <!--<?php
       if(isset($message)){
          foreach($message as $message){
             echo '<div class="message">'.$message.'</div>';
          }
       }
       ?>-->
-      <input type="hidden" name="pr_id" id="pr_id" class="box" required >
-      
-      <input type="text" name="propertyname" id="propertyname" placeholder="enter property name" class="box" required>
-      <input type="text" name="propertydescription" id="propertydescription" placeholder="enter property description" class="box" required>
-      
-      <input type="file" name="propertyimage" id="propertyimage" class="box" accept="image/jpg, image/jpeg, image/png">
-      <input type="text" name="propertyprice" id="propertyprice" placeholder="enter property price" class="box" required>
-      <input type="text" name="propertytype" id="propertytype" placeholder="enter property type" class="box" required>
+            <input type="hidden" name="pr_id" id="pr_id" class="box" required>
 
-      <input type="test" name="ld_id" id="ld_id" class="box" required >
-      
-      
-      
-      <input type="submit" name="submit" value="register now" class="btn">
-      
-   </form>
+            <input type="text" name="propertyname" id="propertyname" placeholder="enter property name" class="box"
+                required>
+            <input type="text" name="propertydescription" id="propertydescription"
+                placeholder="enter property description" class="box" required>
 
-</div>
+            <input type="file" name="propertyimage" id="propertyimage" class="box"
+                accept="image/jpg, image/jpeg, image/png">
+            <input type="text" name="propertyprice" id="propertyprice" placeholder="enter property price" class="box"
+                required>
+            <input type="text" name="propertytype" id="propertytype" placeholder="enter property type" class="box"
+                required>
+
+            <input type="test" name="ld_id" id="ld_id" class="box" required>
+
+
+
+            <input type="submit" name="submit" value="register now" class="btn">
+            <input type="submit" name="back" class="btn" value="back"
+                onclick="window.location.href='viewproperties.php'">
+
+        </form>
+
+    </div>
 
 </body>
+
 </html>
