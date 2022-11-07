@@ -31,16 +31,30 @@ include("navbar.php");
     .listings {
         background-color: transparent;
         border: none;
-        color: black;
+        color: white;
         margin-top: 1em;
         margin-bottom: 1em;
         width: 100%;
         height: 5vh;
+        font-size: 1.5em;
 
     }
 
     .listings:hover {
-        background-color: #fe98fe;
+        background-color: #1e3d75;
+    }
+
+    .left-section {
+        background-color: #233354;
+        margin-left: 0;
+    }
+    .container{
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .content{
+        margin-left: 0;
+        padding-left: 0;
     }
     </style>
     <div class="container" style="margin-top: 0;">
