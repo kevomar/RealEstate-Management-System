@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-        include 'config.php';
-        
+include 'config.php';
 
-    ?>
+
+?>
 
 <head>
     <title>Index</title>
@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="css/style3.css">
 
     <style>
-    .logo {
-        width: 100px;
-        border-radius: 100px;
-        float: left;
-    }
+        .logo {
+            width: 100px;
+            border-radius: 100px;
+            float: left;
+        }
     </style>
 
 
@@ -46,19 +46,21 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-top: 3em;">
-                <?php 
+                <?php
 
-          if(isset($_SESSION["user_id"]) && !empty($_SESSION['user_id'])){
-            $user_id = $_SESSION['user_id'];
-            $username_query = "SELECT u_firstname, u_lastname FROM users WHERE u_id = '$user_id'";
-            $username_result = mysqli_query($conn, $username_query);
-            $username_row = mysqli_fetch_assoc($username_result);
-            $username = $username_row['u_firstname'] . ' ' . $username_row['u_lastname'];
-          ?>
+                if (isset($_SESSION["user_id"]) && !empty($_SESSION['user_id'])) {
+                    $user_id = $_SESSION['user_id'];
+                    $username_query = "SELECT u_firstname, u_lastname FROM users WHERE u_id = '$user_id'";
+                    $username_result = mysqli_query($conn, $username_query);
+                    $username_row = mysqli_fetch_assoc($username_result);
+                    $username = $username_row['u_firstname'] . ' ' . $username_row['u_lastname'];
+                ?>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span
-                            class="glyphicon glyphicon-user"></span> <?php echo $username  ?>
-                        <span class="caret"></span></a>
+                            class="glyphicon glyphicon-user"></span>
+                        <?php echo $username ?>
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a href="home.php">Profile</a></li>
                         <li><a href="booked-property.php">Booked Property</a></li>
@@ -69,12 +71,11 @@
 
                 <?php
 
-            }
-
-            else {?>
+                } else { ?>
                 <li><a href="../dxf/registerform.php"><span class="glyphicon glyphicon-user"></span> Register</a></li>
                 <li><a href="../dxf/loginform.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href=""><span class="glyphic../dxf/loginlandlord.phpon glyphicon-log-in"></span> Login As
+                <li><a href="../dxf/loginlandlord.php"><span
+                            class="glyphic../dxf/loginlandlord.phpon glyphicon-log-in"></span> Login As
                         landlord/Admin</a></li>
                 <?php } ?>
             </ul>

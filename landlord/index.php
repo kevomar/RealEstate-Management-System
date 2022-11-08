@@ -10,58 +10,84 @@
     <link rel="stylesheet" href="style.css">
     <title>Admin</title>
 </head>
+<style>
+    .listings {
+        background-color: transparent;
+        border: none;
+        color: white;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 100%;
+        height: 5vh;
+        font-size: 1.5em;
+
+    }
+
+    .listings:hover {
+        background-color: #1e3d75;
+    }
+
+    .left-section {
+        background-color: #233354;
+        margin-left: 0;
+    }
+
+    .container {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-left: 0;
+    }
+</style>
 
 <body>
-    <?php  //include('../dxf/navbar.php');?>
-    <div class="container">
-        <div class="header">
-            <h1>Landlord</h1>
-        </div>
-        <div class="content">
-            <div class="left-section">
-                <button class="btn btn-primary btn-grp">
-                    <a href="index.php?dashboard">Dashboard</a>
-                </button>
-                <button class="btn btn-primary btn-grp">
-                    <a href="index.php?users">Tenants</a>
-                </button>
-                <button class="btn btn-primary btn-grp">
-                    <a href="index.php?newpropertyview">Propeties</a>
-                </button>
-                <a href="index.php?appointments"><button class="btn btn-primary btn-grp">Appointments</button></a>
-                <a href="index.php?bookings"><button class="btn btn-primary btn-grp">Bookings</button></a>
-                <a href="index.php?payments"><button class="btn btn-primary btn-grp">Payments</button></a>
-                <a href="#"><button class="btn btn-primary btn-grp">Reviews</button></a>
-                <a href="../software eng/"><button class="btn btn-primary btn-grp">Logout</button></a>
+    <?php //include('../dxf/navbar.php');?>
+    <div class="container" style="margin-left: 0; padding-left: 0;">
+        <div class=" header">
+        <h1>Landlord</h1>
+    </div>
+    <div class="content">
+        <div class="left-section">
 
-            </div>
-            <div class="right-section table-responsive">
-                <?php
-                if (isset($_GET['bookings'])) {
-                    include 'bookings.php';
-                }
-                elseif (isset($_GET['appointments'])) {
-                    include 'appointments.php';
-                }
-                elseif (isset($_GET['payments'])) {
-                    include 'payments.php';
-                }
-                elseif (isset($_GET['dashboard'])) {
-                    include 'dashboard.php';
-                }
-                elseif (isset($_GET['users'])) {
-                    include 'users.php';
-                }
-                elseif (isset($_GET['newpropertyview'])) {
-                    include 'newpropertyview.php';
-                }
-                else {
-                    include 'dashboard.php';
-                }
-                ?>
+            <a href="index.php?dashboard"><button class="listings">Dashboard</button></a>
 
-            </div>
+
+            <a href="index.php?users"><button class="listings">Tenants</button></a>
+
+
+            <a href="index.php?newpropertyview"><button class="listings">Propeties</button></a>
+
+            <a href="index.php?appointments"><button class="listings">Appointments</button></a>
+            <a href="index.php?bookings"><button class="listings">Bookings</button></a>
+            <a href="index.php?payments"><button class="listings">Payments</button></a>
+            <a href="#"><button class="listings">Reviews</button></a>
+            <a href="../software eng/"><button class="listings">Logout</button></a>
+
         </div>
+        <div class="right-section table-responsive">
+            <?php
+            if (isset($_GET['bookings'])) {
+                include 'bookings.php';
+            } elseif (isset($_GET['appointments'])) {
+                include 'appointments.php';
+            } elseif (isset($_GET['payments'])) {
+                include 'payments.php';
+            } elseif (isset($_GET['dashboard'])) {
+                include 'dashboard.php';
+            } elseif (isset($_GET['users'])) {
+                include 'users.php';
+            } elseif (isset($_GET['newpropertyview'])) {
+                include 'newpropertyview.php';
+            } else {
+                include 'dashboard.php';
+            }
+            ?>
+
+    </div>
+    </div>
     </div>
 </body>
 

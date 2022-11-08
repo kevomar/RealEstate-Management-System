@@ -2,7 +2,7 @@
 session_start();
 require("config.php");
 ////code
- 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,20 +79,31 @@ require("config.php");
 
                 <tbody>
                     <?php
-													
-													$query=mysqli_query($conn,"select * from property");
-													while($row=mysqli_fetch_assoc($query))
-													{
-												?>
+
+                    $query = mysqli_query($conn, "select * from property");
+                    while ($row = mysqli_fetch_assoc($query)) {
+                    ?>
 
                     <tr>
-                        <td><?php echo $row['pr_id']; ?></td>
-                        <td><?php echo $row['pr_name'];?></td>
-                        <td><?php echo $row['pr_description']; ?></td>
-                        <td> <img src="images/<?=$row['pr_image']; ?>" style='height:50px;'></td>
-                        <td><?php echo $row['pr_price']; ?></td>
-                        <td><?php echo $row['pr_type']; ?></td>
-                        <td><?php echo $row['ld_id']; ?></td>
+                        <td>
+                            <?php echo $row['pr_id']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['pr_name']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['pr_description']; ?>
+                        </td>
+                        <td> <img src="../dxf/uploadsforproperties/<?= $row['pr_image']; ?>" style='height:50px;'></td>
+                        <td>
+                            <?php echo $row['pr_price']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['pr_type']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['ld_id']; ?>
+                        </td>
 
 
 
@@ -105,24 +116,24 @@ require("config.php");
 
 
                         <!--  <td><?php //echo $row['29']; ?></td>  -->
-                        <td><a href="newpropertyedit.php?id=<?php echo $row['pr_id'];?>"><button
+                        <td><a href="newpropertyedit.php?id=<?php echo $row['pr_id']; ?>"><button
                                     class="btn btn-primary">Edit</button></a></td>
                         <td>
-                            <a href="newpropertydelete.php?id=<?php echo $row['pr_id'];?>"><button
+                            <a href="newpropertydelete.php?id=<?php echo $row['pr_id']; ?>"><button
                                     class="btn btn-danger">Delete</button></a>
                         </td>
                     </tr>
                     <?php
-												} 
-												?>
+                    }
+                    ?>
                 </tbody>
             </table>
 
             <!-- end card body-->
-            <!-- end card -->
-            <!-- end col-->
+                        <!-- end card -->
+                        <!-- end col-->
 
-            <!-- end row-->
+                        <!-- end row-->
 
         </div>
     </div>
