@@ -11,6 +11,10 @@
     <title>Admin</title>
 </head>
 <style>
+    * {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
     .listings {
         background-color: transparent;
         border: none;
@@ -44,7 +48,7 @@
 </style>
 
 <body>
-    <div class="container">
+    <div class="container" style="margin-left: 0; padding-left: 0;">
         <div class="header">
             <h1>Admin</h1>
         </div>

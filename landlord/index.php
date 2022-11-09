@@ -28,7 +28,7 @@
     }
 
     .left-section {
-        background-color: #233354;
+        background-color: #272075;
         margin-left: 0;
     }
 
@@ -58,7 +58,7 @@
             <a href="index.php?users"><button class="listings">Tenants</button></a>
 
 
-            <a href="index.php?newpropertyview"><button class="listings">Propeties</button></a>
+            <a href="index.php?newpropertyview"><button class="listings">Properties</button></a>
 
             <a href="index.php?appointments"><button class="listings">Appointments</button></a>
             <a href="index.php?bookings"><button class="listings">Bookings</button></a>
