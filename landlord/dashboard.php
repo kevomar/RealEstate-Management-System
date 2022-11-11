@@ -8,7 +8,7 @@
 include 'includes/connect.php';
 session_start();
 
-$id  = $_SESSION['user_id'];
+$id = $_SESSION['user_id'];
 
 $query = "SELECT * FROM landlords WHERE ld_id = $id";
 $run = mysqli_query($conn, $query);
@@ -21,7 +21,7 @@ if (mysqli_num_rows($run) > 0) {
         $get_landlord = "SELECT ld_firstname, ld_lastname FROM landlords WHERE ld_id = " . $id;
         $run_landlord = mysqli_query($conn, $get_landlord);
         $landlord = mysqli_fetch_array($run_landlord);
-        
+
 
         $name = $row['ld_firstname'] . ' ' . $row['ld_lastname'];
         $email = $row['ld_email'];
@@ -33,16 +33,16 @@ if (mysqli_num_rows($run) > 0) {
         $bank = $row['ld_bankaccountno'];
 ?>
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: grey;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 </style>
 
 <body>
@@ -54,11 +54,11 @@ body {
             </div>
             <div class="form-group">
                 <label for=username>Firstname</label>
-                <input type="text" class="form-control" name="username" value=<?php echo $row['ld_firstname'];?>>
+                <input type="text" class="form-control" name="username" value=<?php echo $row['ld_firstname']; ?>>
             </div>
             <div class="form-group">
                 <label for=last>Lastname</label>
-                <input type="text" class="form-control" name="last" value=<?php echo $row['ld_lastname'];?>>
+                <input type="text" class="form-control" name="last" value=<?php echo $row['ld_lastname']; ?>>
             </div>
             <div class="form-group">
                 <label for="Email">Email</label>
@@ -97,9 +97,10 @@ if (isset($_POST['back'])) {
     header('Location: index.php?landlord');
 }
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $id = $_POST['user'];
-    $username = $_POST['username'];
+    $username = $_POST['firstname'];
+    $last = $_POST['last'];
     $Email = $_POST['Email'];
     $phone = $_POST['phone'];
     $date = $_POST['date'];
@@ -110,7 +111,7 @@ if(isset($_POST['submit'])) {
     $update = "UPDATE landlords SET ld_firstname = '$username', ld_lastname = '$last', ld_email = '$Email', ld_phonenumber = '$phone', ld_dob = '$date',ld_gender = '$Gender', ld_bankaccountno = '$bank', ld_address = '$address' WHERE ld_id = $id";
     $run_update = mysqli_query($conn, $update);
 
-    if($run_update) {
+    if ($run_update) {
         echo "<script>alert('Landlord has been updated!')</script>";
         echo "<script>window.open('index.php?landlord', '_self')</script>";
     }

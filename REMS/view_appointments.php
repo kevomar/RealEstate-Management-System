@@ -7,7 +7,7 @@
 <?php
 include 'includes/connect.php';
 
-$id  = $_GET['id'];
+$id = $_GET['id'];
 
 $query = "SELECT * FROM appointments WHERE ap_id = $id";
 $run = mysqli_query($conn, $query);
@@ -31,16 +31,16 @@ if (mysqli_num_rows($run) > 0) {
         $landlord = mysqli_fetch_array($run_landlord);
 ?>
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 </style>
 
 <body>
@@ -52,8 +52,8 @@ body {
             </div>
             <div class="form-group">
                 <label for=username>User Name</label>
-                <input type="text" class="form-control" name="username"
-                    value=<?php echo $user['u_firstname'] . ' ' . $user['u_lastname']; ?> disabled>
+                <input type="text" class="form-control" name="username" value=<?php echo $user['u_firstname'] . ' ' .
+            $user['u_lastname']; ?> disabled>
             </div>
             <div class="form-group">
                 <label for="property">Property</label>
@@ -77,10 +77,16 @@ body {
                 </div>
                 <div class="form-group" style="margin-top: 1em;">
                     <button type="submit" name="submit" class="btn btn-primary">Back</button>
+                    <input type="submit" value="Back" class="btn btn-danger" name="back" style="margin-left:200px;"
+                        onclick=goback()>
                 </div>
-
         </form>
     </div>
+    <script>
+        function goback() {
+            window.open('index.php?appointments');
+        }
+    </script>
 </body>
 
 <?php

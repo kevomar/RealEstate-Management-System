@@ -37,7 +37,8 @@
         <div class="card">
                 <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group"><label for=""></label> <img
-                                        src="images/<?php echo $fetch_edit['u_image']; ?>" height="20" alt=""></div>
+                                        src="../dxf/uploads<?php echo $fetch_edit['u_image']; ?>" height="20" alt="">
+                        </div>
                         <!--<div class="formgroup"><label for="update_u_id"></label> <input type="hidden" name="update_u_id"
                 value="<?php //echo $fetch_edit['u_id']; ?>"></div>-->
             <div class="form-group"><label for="update_u_email">Email</label> <input type="text" class="form-control"
@@ -107,10 +108,10 @@
             $update_query = mysqli_query($conn, "UPDATE `users` SET u_email = '$u_email', u_firstname = '$u_firstname', u_lastname = '$u_lastname', u_phonenumber = '$u_phonenumber',u_gender='$u_gender', u_dob = '$u_dob' WHERE u_id = $edit_id");
             if ($update_query) {
                     echo "<script>alert('User updated successfully!')</script>";
-                    echo "<script>window.open('index.php?users, '_self')</script>";
+                    header('Location: ./index.php?users');
             } else {
                     echo "<script>alert('User not updated!')</script>";
-                    echo "<script>window.open('index.php', '_self')</script>";
+                    echo "<script>window.open('index.php?users', '_self')</script>";
             }
     }
 

@@ -20,18 +20,19 @@ if (isset($_POST['add_appointment'])) {
 ?>
 
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 </style>
 <div class="card">
+    <h3 style="text-align:center;">Add appointment</h3>
     <form action="" method="post">
         <div class="form-group">
             <label for="user" class="form-label">User Id</label>
@@ -39,12 +40,12 @@ body {
                 <select name="user" id="user" class="form-control">
                     <option value="n/a">Select User</option>
                     <?php
-                        if (mysqli_num_rows($run_user_ids) > 0) {
-                            while ($row = mysqli_fetch_array($run_user_ids)) {
-                                echo "<option value='" . $row['u_id'] . "'>" . $row['u_id'] . "</option>";
-                            }
-                        }
-                        ?>
+    if (mysqli_num_rows($run_user_ids) > 0) {
+        while ($row = mysqli_fetch_array($run_user_ids)) {
+            echo "<option value='" . $row['u_id'] . "'>" . $row['u_id'] . "</option>";
+        }
+    }
+                    ?>
                 </select>
             </php>
         </div>
@@ -53,12 +54,12 @@ body {
             <select name="property" id="property" class="form-control">
                 <option value="0">Select Property</option>
                 <?php
-                    if (mysqli_num_rows($run_property_ids) > 0) {
-                        while ($row = mysqli_fetch_array($run_property_ids)) {
-                            echo "<option value='" . $row['pr_id'] . "'>" . $row['pr_id'] . "</option>";
-                        }
-                    }
-                    ?>
+    if (mysqli_num_rows($run_property_ids) > 0) {
+        while ($row = mysqli_fetch_array($run_property_ids)) {
+            echo "<option value='" . $row['pr_id'] . "'>" . $row['pr_id'] . "</option>";
+        }
+    }
+                ?>
             </select>
         </div>
         <div class="form-group">
@@ -66,12 +67,12 @@ body {
             <select class="form-control" id="landlord" name="landlord">
                 <option value="0">Select Landlord</option>
                 <?php
-                    if (mysqli_num_rows($run_landlord_ids) > 0) {
-                        while ($row = mysqli_fetch_array($run_landlord_ids)) {
-                            echo "<option value='" . $row['ld_id'] . "'>" . $row['ld_id'] . "</option>";
-                        }
-                    }
-                    ?>
+    if (mysqli_num_rows($run_landlord_ids) > 0) {
+        while ($row = mysqli_fetch_array($run_landlord_ids)) {
+            echo "<option value='" . $row['ld_id'] . "'>" . $row['ld_id'] . "</option>";
+        }
+    }
+                ?>
             </select>
         </div>
         <div class="form-group">
@@ -88,9 +89,16 @@ body {
         </div>
         <div class="form-group" style="margin-top: 1em;">
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" value="Back" class="btn btn-danger" name="back" style="margin-left:200px;"
+                onclick=goback()>
         </div>
     </form>
 </div>
+<script>
+    function goback() {
+        window.open('index.php?appointments');
+    }
+</script>
 <?php
 }
 

@@ -1,6 +1,5 @@
 <?php
-
-include 'config.php';
+include('includes/connect.php');
 
 if (isset($_POST['submit'])) {
 
@@ -8,8 +7,8 @@ if (isset($_POST['submit'])) {
     $u_firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
     $u_lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
     $u_phonenumber = mysqli_real_escape_string($conn, $_POST['phonenumber']);
-    $u_password = mysqli_real_escape_string($conn, $_POST['password']);
-    $cpass = mysqli_real_escape_string($conn, $_POST['cpassword']);
+    $u_password = mysqli_real_escape_string($conn, md5($_POST['password']));
+    $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
     $u_gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $u_dob = mysqli_real_escape_string($conn, $_POST['Dob']);
     $u_image = $_FILES['image']['name'];
@@ -44,6 +43,8 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -401,7 +402,7 @@ if (isset($_POST['submit'])) {
             <input type="radio" name="gender" value="m" required>Male
             <input type="radio" name="gender" value="f" required>Female
             <input type="date" name="Dob" id="Dob" placeholder="enter date of birth" class="box" required>
-            <input type="submit" name="submit" value="register now" class="btn btn-primary">
+            <input type="submit" name="submit" class="btn btn-primary">
         </form>
     </div>
 </body>

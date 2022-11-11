@@ -2,38 +2,34 @@
 session_start();
 require("config.php");
 ////code
- 
 
-if(isset($_POST['add']))
-{
-    var_dump($_POST);
-  
-  $pr_name=$_POST['pr_name'];
-  $pr_description=$_POST['pr_description'];
 
-  $pr_price=$_POST['pr_price'];
-  $pr_type=$_POST['pr_type'];
-  $ld_id=$_POST['landlordId'];
+if (isset($_POST['add'])) {
 
- 
-  $aimage=$_FILES['aimage']['name'];
-  $temp_name  =$_FILES['aimage']['tmp_name'];
-  
-  
-  move_uploaded_file($temp_name,"images/$aimage");
-  
-  
-  $sql="INSERT INTO property (pr_name,pr_description,pr_image,pr_price,pr_type,ld_id)
+    $pr_name = $_POST['pr_name'];
+    $pr_description = $_POST['pr_description'];
+
+    $pr_price = $_POST['pr_price'];
+    $pr_type = $_POST['pr_type'];
+    $ld_id = $_POST['landlordId'];
+
+
+    $aimage = $_FILES['aimage']['name'];
+    $temp_name = $_FILES['aimage']['tmp_name'];
+
+
+    move_uploaded_file($temp_name, "../dxf/uploadsforproperties/$aimage");
+
+
+    $sql = "INSERT INTO property (pr_name,pr_description,pr_image,pr_price,pr_type,ld_id)
   VALUES('$pr_name','$pr_description','$aimage','$pr_price','$pr_type','$ld_id')";
-  $result=mysqli_query($conn,$sql);
-  if($result)
-    {
-      $msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
-          
-    }
-    else
-    {
-      $error="<p class='alert alert-warning'>Something went wrong. Please try again</p>";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $msg = "<p class='alert alert-success'>Property Inserted Successfully</p>";
+        header('Location: index.php?newpropertyview');
+
+    } else {
+        $error = "<p class='alert alert-warning'>Something went wrong. Please try again</p>";
     }
 }
 ?>
@@ -70,25 +66,25 @@ if(isset($_POST['add']))
 
 </head>
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 
-.form-control {
-    width: auto;
+    .form-control {
+        width: auto;
 
-}
+    }
 
-label {
-    width: auto;
-}
+    label {
+        width: auto;
+    }
 </style>
 
 <body>
@@ -201,7 +197,7 @@ label {
                                                 $sql = "SELECT * FROM landlords";
                                                 $result = mysqli_query($conn, $sql);
                                                 while ($row = mysqli_fetch_assoc($result)) {
-                                                    echo "<option value='" . $row['ld_id'] . "'>" . $row['ld_id'].' '.$row['ld_firstname'].' '.$row['ld_lastname'] . "</option>";
+                                                    echo "<option value='" . $row['ld_id'] . "'>" . $row['ld_id'] . ' ' . $row['ld_firstname'] . ' ' . $row['ld_lastname'] . "</option>";
                                                 }
                                                 ?>
                                             </select>
@@ -218,6 +214,8 @@ label {
 
                                 <input type="submit" value="Submit" class="btn btn-primary" name="add"
                                     style="margin-left:200px;">
+                                <input type="submit" value="Back" class="btn btn-danger" name="back"
+                                    style="margin-left:200px;" onclick=goback()>
 
                             </div>
                         </form>
@@ -231,7 +229,11 @@ label {
 
 
 
-
+    <script>
+        function goback() {
+            window.open('index.php?newpropertyview');
+        }
+    </script>
 </body>
 
 </html>

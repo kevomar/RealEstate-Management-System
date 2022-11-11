@@ -4,10 +4,14 @@
 
 </head>
 
+<style>
+
+</style>
+
 <?php
 include 'includes/connect.php';
 
-$id  = $_GET['id'];
+$id = $_GET['id'];
 
 $query = "SELECT * FROM landlords WHERE ld_id = $id";
 $run = mysqli_query($conn, $query);
@@ -20,7 +24,7 @@ if (mysqli_num_rows($run) > 0) {
         $get_landlord = "SELECT ld_firstname, ld_lastname FROM landlords WHERE ld_id = " . $id;
         $run_landlord = mysqli_query($conn, $get_landlord);
         $landlord = mysqli_fetch_array($run_landlord);
-        
+
 
         $name = $row['ld_firstname'] . ' ' . $row['ld_lastname'];
         $email = $row['ld_email'];
@@ -32,16 +36,16 @@ if (mysqli_num_rows($run) > 0) {
         $bank = $row['ld_bankaccountno'];
 ?>
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 </style>
 
 <body>
@@ -53,7 +57,7 @@ body {
             </div>
             <div class="form-group">
                 <label for=username>Name</label>
-                <input type="text" class="form-control" name="username" value=<?php echo $name;?> disabled>
+                <input type="text" class="form-control" name="username" value=<?php echo $name; ?> disabled>
             </div>
             <div class="form-group">
                 <label for="Email">Email</label>

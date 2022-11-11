@@ -2,40 +2,40 @@
 session_start();
 require("config.php");
 
-$error="";
-$msg="";
+$error = "";
+$msg = "";
+if (isset($_POST['back'])) {
+    header('Location: index.php?newpropertyview');
+}
 
-if(isset($_POST['add']))
-{
-	
-	$pr_id=$_REQUEST['id'];
-	
-	$pr_name=$_POST['pr_name'];
-	$pr_description=$_POST['pr_description'];
-	$pr_price=$_POST['pr_price'];
-	$pr_type=$_POST['pr_type'];
-	$ld_id=$_POST['ld_id'];
+if (isset($_POST['add'])) {
 
-	$aimage=$_FILES['aimage']['name'];
-	$temp_name  =$_FILES['aimage']['tmp_name'];
+    $pr_id = $_REQUEST['id'];
 
-    move_uploaded_file($temp_name,"images/$aimage");
-	
-	
-	
-	$sql = "UPDATE property SET pr_name= '{$pr_name}',pr_description='{$pr_description}', pr_image='{$aimage}',
+    $pr_name = $_POST['pr_name'];
+    $pr_description = $_POST['pr_description'];
+    $pr_price = $_POST['pr_price'];
+    $pr_type = $_POST['pr_type'];
+    $ld_id = $_POST['ld_id'];
+
+    $aimage = $_FILES['aimage']['name'];
+    $temp_name = $_FILES['aimage']['tmp_name'];
+
+    move_uploaded_file($temp_name, "images/$aimage");
+
+
+
+    $sql = "UPDATE property SET pr_name= '{$pr_name}',pr_description='{$pr_description}', pr_image='{$aimage}',
 	pr_price='{$pr_price}', pr_type='{$pr_type}',ld_id='{$ld_id}' WHERE pr_id = {$pr_id}";
-	
-	$result=mysqli_query($conn,$sql);
-	if($result == true)
-	{
-		$msg="<p class='alert alert-success'>Property Updated</p>";
-		header("Location:newpropertyview.php?msg=$msg");
-	}
-	else{
-		$msg="<p class='alert alert-warning'>Property Not Updated</p>";
-		header("Location:newpropertyview.php?msg=$msg");
-	}
+
+    $result = mysqli_query($conn, $sql);
+    if ($result == true) {
+        $msg = "<p class='alert alert-success'>Property Updated</p>";
+        header("Location:newpropertyview.php?msg=$msg");
+    } else {
+        $msg = "<p class='alert alert-warning'>Property Not Updated</p>";
+        header("Location:newpropertyview.php?msg=$msg");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -55,16 +55,16 @@ if(isset($_POST['add']))
 
 </head>
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 </style>
 
 <body>
@@ -98,12 +98,11 @@ body {
                         <form method="post" enctype="multipart/form-data">
 
                             <?php
-									
-									$pr_id=$_REQUEST['id'];
-									$query=mysqli_query($conn,"select * from property where pr_id='$pr_id'");
-									while($row=mysqli_fetch_assoc($query))
-									{
-								?>
+
+                            $pr_id = $_REQUEST['id'];
+                            $query = mysqli_query($conn, "select * from property where pr_id='$pr_id'");
+                            while ($row = mysqli_fetch_assoc($query)) {
+                            ?>
 
                             <div class="card-body">
                                 <h5 class="card-title">Property Detail</h5>
@@ -136,9 +135,11 @@ body {
                                         <div class="form-group row">
                                             <label>image </label>
                                             <div class="col-lg-9">
-                                                <input class="form-control" name="aimage" type="file" required="">
-                                                <img src="images/<?php echo $row['pr_image'];?>" height="150"
-                                                    width="180">
+                                                <input class="form-control" name="aimage" type="file"
+                                                    placeholder="../dxf/uploadsforproperties/<?php echo $row['pr_image'] ?>"
+                                                    required="" disabled>
+                                                <img src="../dxf/uploadsforproperties/<?php echo $row['pr_image']; ?>"
+                                                    height="150" width="180" disabled>
                                             </div>
                                         </div>
 
@@ -193,15 +194,16 @@ body {
                             <div class="form-group">
                                 <input type="submit" value="Submit" class="btn btn-primary" name="add"
                                     style="margin-left:200px;">
+                                <input type="submit" value="Back" class="btn btn-danger" name="back"
+                                    style="margin-left:200px;" onclick=goback()>
                             </div>
-
 
                     </div>
                     </form>
 
                     <?php
-									} 
-								?>
+                            }
+                            ?>
 
                 </div>
             </div>
@@ -215,5 +217,10 @@ body {
 
 
 </body>
+<script>
+    function goback() {
+        window.open('index.php?newpropertyview');
+    }
+</script>
 
 </html>

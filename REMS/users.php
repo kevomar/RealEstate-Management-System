@@ -14,7 +14,7 @@ if (isset($_POST['add_users'])) {
 
     $u_image = $_FILES['u_image']['name'];
     $u_image_tmp_name = $_FILES['u_image']['tmp_name'];
-    $u_image_folder = 'images/' . $u_image;
+    $u_image_folder = '../dxf/uploads/' . $u_image;
 
     $insert_query = mysqli_query($conn, "INSERT INTO `users`(u_email,u_firstname,u_lastname, u_phonenumber,u_image,u_password,u_gender,u_dob) VALUES('$u_email','$u_firstname', '$u_lastname','$u_phonenumber','$u_image','$u_password', '$u_gender','$u_dob')") or die('query failed');
 
@@ -55,7 +55,7 @@ if (isset($_POST['update_users'])) {
 
     $update_u_image = $_FILES['update_u_image']['name'];
     $update_u_image_tmp_name = $_FILES['update_u_image']['tmp_name'];
-    $update_u_image_folder = 'images/' . $update_u_image;
+    $update_u_image_folder = '../dxf/uploads/' . $update_u_image;
 
 
 
@@ -156,7 +156,7 @@ if (isset($_POST['update_users'])) {
                         ?>
 
                         <tr>
-                            <td><img src="images/<?php echo $row['u_image']; ?>" height="100" alt=""></td>
+                            <td><img src="../dxf/uploads/<?php echo $row['u_image']; ?>" height="100" alt=""></td>
                             <td>
                                 <?php echo $row['u_email']; ?>
                             </td>

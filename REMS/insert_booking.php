@@ -17,17 +17,18 @@ if (isset($_POST['add_booking'])) {
 
     $getlandlord_ids = "SELECT ld_id FROM landlords";
     $run_landlord_ids = mysqli_query($conn, $getlandlord_ids);
-?><style>
-body {
-    background: grey;
-}
+?>
+<style>
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 </style>
 
 <body>
@@ -39,11 +40,11 @@ body {
                     <select name="user" id="user" class="form-control">
                         <option value="n/a">Select User</option>
                         <?php
-                        if (mysqli_num_rows($run_user_ids) > 0) {
-                            while ($row = mysqli_fetch_array($run_user_ids)) {
-                                echo "<option value='" . $row['u_id'] . "'>" . $row['u_id'] . "</option>";
-                            }
-                        }
+    if (mysqli_num_rows($run_user_ids) > 0) {
+        while ($row = mysqli_fetch_array($run_user_ids)) {
+            echo "<option value='" . $row['u_id'] . "'>" . $row['u_id'] . "</option>";
+        }
+    }
                         ?>
                     </select>
                 </php>
@@ -53,11 +54,11 @@ body {
                 <select name="property" id="property" class="form-control">
                     <option value="0">Select Property</option>
                     <?php
-                    if (mysqli_num_rows($run_property_ids) > 0) {
-                        while ($row = mysqli_fetch_array($run_property_ids)) {
-                            echo "<option value='" . $row['pr_id'] . "'>" . $row['pr_id'] . "</option>";
-                        }
-                    }
+    if (mysqli_num_rows($run_property_ids) > 0) {
+        while ($row = mysqli_fetch_array($run_property_ids)) {
+            echo "<option value='" . $row['pr_id'] . "'>" . $row['pr_id'] . "</option>";
+        }
+    }
                     ?>
                 </select>
             </div>
@@ -66,11 +67,11 @@ body {
                 <select class="form-control" id="landlord" name="landlord">
                     <option value="0">Select Landlord</option>
                     <?php
-                    if (mysqli_num_rows($run_landlord_ids) > 0) {
-                        while ($row = mysqli_fetch_array($run_landlord_ids)) {
-                            echo "<option value='" . $row['ld_id'] . "'>" . $row['ld_id'] . "</option>";
-                        }
-                    }
+    if (mysqli_num_rows($run_landlord_ids) > 0) {
+        while ($row = mysqli_fetch_array($run_landlord_ids)) {
+            echo "<option value='" . $row['ld_id'] . "'>" . $row['ld_id'] . "</option>";
+        }
+    }
                     ?>
                 </select>
             </div>
@@ -92,9 +93,16 @@ body {
             </div>
             <div class="form-group" style="margin-top: 1em;">
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <button type="button" name="submit" class="btn btn-danger" onclick=goback()>Back</button>
+
             </div>
         </form>
     </div>
+    <script>
+        function goback() {
+            window.open('index.php?bookings', '_self')
+        }
+    </script>
 </body>
 <?php
 }

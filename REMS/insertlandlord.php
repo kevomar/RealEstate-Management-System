@@ -1,30 +1,31 @@
 <?php
 session_start();
-$conn = mysqli_connect('localhost', 'root', '','rems');
+$conn = mysqli_connect('localhost', 'root', '', 'rems');
 
 // When form submitted, insert values into the database.
-if(isset($_POST['submit'])){
-    $ld_firstname =  $_POST['Fname'];
-    $ld_lastname =  $_POST['Sname'];
-    $ld_email =  $_POST['Email'];
-    $ld_phonenumber =  $_POST['Phone'];
+if (isset($_POST['submit'])) {
+    $ld_firstname = $_POST['Fname'];
+    $ld_lastname = $_POST['Sname'];
+    $ld_email = $_POST['Email'];
+    $ld_phonenumber = $_POST['Phone'];
     $ld_image = $_FILES["image"]['name'];
     $tempname = $_FILES["image"]["tmp_name"];
-    $folder = "Images/" . $ld_image;
+    $folder = "../dxf/uploads/" . $ld_image;
     $ld_password = $_POST['password'];
     $ld_dob = $_POST['DOB'];
     $ld_bankaccountno = $_POST['BAN'];
     $ld_address = $_POST['address'];
     $ld_gender = $_POST['gender'];
- 
+
     $pro = "INSERT INTO `landlords`( ld_firstname, ld_lastname, ld_email, ld_phonenumber, ld_image,ld_dob , ld_bankaccountno, ld_password, ld_address, ld_gender) VALUES('$ld_firstname','$ld_lastname','$ld_email','$ld_phonenumber','$ld_image','$ld_dob','$ld_bankaccountno','$ld_password','$ld_address','$ld_gender')";
-          $result   = mysqli_query($conn, $pro);
-          if ($result) {
-              echo "<script>alert('Registration Successful')</script>";
-              header('location:index.php?landlord');      
-          }
+    $result = mysqli_query($conn, $pro);
+    if ($result) {
+        move_uploaded_file($tempname, $folder);
+        echo "<script>alert('Registration Successful')</script>";
+        header('location:index.php?landlord');
+    }
 }
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,22 +43,26 @@ if(isset($_POST['submit'])){
 
 </head>
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    * {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
 
-span {
-    font-weight: bold;
-    display: block;
-    width: 100%;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
+
+    span {
+        font-weight: bold;
+        display: block;
+        width: 100%;
+    }
 </style>
 
 <body>
@@ -69,12 +74,14 @@ span {
 
 
                 <?php
-      if(isset($error)){
-         foreach($error as $error){
-            echo '<span class="error-msg">'.$error.'</span>';
-         };
-      };
-      ?>
+                if (isset($error)) {
+                    foreach ($error as $error) {
+                        echo '<span class="error-msg">' . $error . '</span>';
+                    }
+                    ;
+                }
+                ;
+                ?>
 
                 <div class="inputbox">
                     <span>First name</span>
@@ -127,8 +134,8 @@ span {
                     <span>Gender</span>
 
                     <select name="gender" id="gender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
                     </select>
                 </div>
                 <br><br>
@@ -140,8 +147,6 @@ span {
 
             <div>
                 <p>Already have an account? <a href="../dxf/loginlandlord.php">Login now</a></p>
-
-
             </div>
 
 

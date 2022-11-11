@@ -7,7 +7,7 @@
 <?php
 include 'includes/connect.php';
 
-$id  = $_GET['id'];
+$id = $_GET['id'];
 
 $query = "SELECT * FROM bookings WHERE bk_id = $id";
 $run = mysqli_query($conn, $query);
@@ -29,16 +29,16 @@ if (mysqli_num_rows($run) > 0) {
 
 ?>
 <style>
-body {
-    background: grey;
-}
+    body {
+        background: #272075;
+    }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+    .card {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        margin-top: 2em;
+        padding: 4em;
+    }
 </style>
 
 <body>
@@ -50,8 +50,8 @@ body {
             </div>
             <div class="form-group">
                 <label for=username>User Name</label>
-                <input type="text" class="form-control" name="username"
-                    placeholder=<?php echo $user['u_firstname'] . ' ' . $user['u_lastname']; ?> disabled>
+                <input type="text" class="form-control" name="username" placeholder=<?php echo $user['u_firstname'] . '
+                    ' . $user['u_lastname']; ?> disabled>
             </div>
             <div class="form-group">
                 <label for="property">Property</label>
@@ -66,7 +66,7 @@ body {
             <div class="form-group">
                 <label for="checkoutdate">Checkout Date</label>
                 <input type="date" class="form-control" name="checkoutdate" id="checkoutdate"
-                    value="<?php echo $checkoutdate  ?>">
+                    value="<?php echo $checkoutdate ?>">
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
@@ -78,10 +78,16 @@ body {
             </div>
             <div class="form-group" style="margin-top: 1em;">
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-            </div>
+                <button type="button" name="submit" class="btn btn-danger" onclick=goback()>Back</button>
 
+            </div>
         </form>
     </div>
+    <script>
+        function goback() {
+            window.open('index.php?bookings', '_self')
+        }
+    </script>
 </body>
 
 <?php
