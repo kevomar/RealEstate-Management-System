@@ -5,18 +5,21 @@
 
 
 <style>
-body {
-    background: grey;
-}
+        * {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
 
-.card {
-    margin-left: 25vw;
-    margin-right: 25vw;
-    margin-top: 2em;
-    padding: 4em;
-}
+        body {
+                background: #272075;
+        }
+
+        .card {
+                margin-left: 25vw;
+                margin-right: 25vw;
+                margin-top: 2em;
+                padding: 4em;
+        }
 </style>
-
 <body style="text-align: centre;">
 
 

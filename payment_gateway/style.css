@@ -1,8 +1,8 @@
 * {
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
-/*   border: 1px solid black; */
+  /*   border: 1px solid black; */
   margin: 0;
   padding: 0;
 }
@@ -15,7 +15,7 @@ body {
   background: #34495e;
   display: flex;
   justify-content: center;
-    animation: fadein 5s;
+  animation: fadein 5s;
   animation-fill-mode: forwards;
 }
 
@@ -25,8 +25,12 @@ body {
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 label {
@@ -38,24 +42,24 @@ label {
   width: 900px;
   height: 700px;
   background: white;
-/*   font-size: 0; */
+  /*   font-size: 0; */
   color: white;
   position: relative;
-/*   animation: slideInFromLeft 1s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
+  /*   animation: slideInFromLeft 1s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
   animation-fill-mode: forwards;
 }
 
 .model:after {
-    width: 30px;
-    content: 'X';
-    height: 30px;
-    color: black;
-    position: absolute;
-    text-align: center;
-    padding-top: 3px;
-    top: 0;
-    right: -30px;
-    background-color: #bdc3c7;
+  width: 30px;
+  content: "X";
+  height: 30px;
+  color: black;
+  position: absolute;
+  text-align: center;
+  padding-top: 3px;
+  top: 0;
+  right: -30px;
+  background-color: #bdc3c7;
 }
 
 @keyframes slideInFromLeft {
@@ -70,7 +74,7 @@ label {
 .room {
   width: 50%;
   height: 100%;
-  background: url(https://images.unsplash.com/photo-1470274038469-958113db2384?auto=format&fit=crop&w=1875&q=80) no-repeat center center;
+  /*background: url(https://images.unsplash.com/photo-1470274038469-958113db2384?auto=format&fit=crop&w=1875&q=80) no-repeat center center;*/
   background-size: cover;
   display: inline-block;
   vertical-align: top;
@@ -82,7 +86,7 @@ label {
   bottom: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
-  padding: 20px
+  padding: 20px;
 }
 
 .text-cover > * {
@@ -123,15 +127,14 @@ label {
   padding: 20px;
 }
 
-
-input[type=text]{
-    width: 100%;
-    padding: 8px 10px 10px;
-    margin: 15px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+input[type="text"] {
+  width: 100%;
+  padding: 8px 10px 10px;
+  margin: 15px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -150,15 +153,13 @@ input[type=text]{
   margin-bottom: 1rem;
   background-color: transparent;
 }
- 
+
 .table td {
   font-size: 0.8rem;
   font-style: italic;
-  padding: .25rem;
+  padding: 0.25rem;
   vertical-align: top;
-    
 }
-
 
 .table td:nth-child(2) {
   text-align: right;

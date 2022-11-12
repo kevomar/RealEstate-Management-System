@@ -33,8 +33,13 @@ if (mysqli_num_rows($run) > 0) {
 ?>
 <style>
     body {
-        background: grey;
+        background: #272075;
     }
+
+    * {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
 
     .card {
         margin-left: 25vw;

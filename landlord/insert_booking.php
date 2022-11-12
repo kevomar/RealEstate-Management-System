@@ -17,9 +17,10 @@ if (isset($_POST['add_booking'])) {
 
     $getlandlord_ids = "SELECT ld_id FROM landlords";
     $run_landlord_ids = mysqli_query($conn, $getlandlord_ids);
-?><style>
+?>
+<style>
 body {
-    background: grey;
+    background: #272075;
 }
 
 .card {

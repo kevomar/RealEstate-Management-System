@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
    if(mysqli_num_rows($result) > 0){
       $row = mysqli_fetch_assoc($result);
       $_SESSION['user_id'] = $row['u_id'];
-      header('location:adminpage.php');
+      header('location:listings.php');
 
    }else{
       $message[] = 'incorrect email or password!';

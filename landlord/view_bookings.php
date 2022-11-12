@@ -29,7 +29,7 @@ if (mysqli_num_rows($run) > 0) {
 
 ?>
 
-<body style="background: #f1f1f1">
+<body style="background: #272075">
     <div
         style="margin: 2em 25vw auto 25vw; box-shadow: 5px 5px 5px 5px #8888; border-radius: 2em; padding: 4em; background: #fff;">
         <form action="" method="post">

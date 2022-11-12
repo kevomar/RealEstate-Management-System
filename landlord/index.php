@@ -11,6 +11,10 @@
     <title>Admin</title>
 </head>
 <style>
+    * {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
     .listings {
         background-color: transparent;
         border: none;
