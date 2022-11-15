@@ -30,7 +30,8 @@ body {
 }
 
 label {
-  display: block;
+ margin:0px;
+  float:left;
 }
 /* Model Container */
 
@@ -124,14 +125,15 @@ label {
 }
 
 
-input[type=text]{
+input{
     width: 100%;
-    padding: 8px 10px 10px;
-    margin: 15px 0;
+    padding: 6px 8px 8px;
+    margin: 5px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    float: right;
 }
 
 .btn {
