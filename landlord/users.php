@@ -91,7 +91,14 @@ if(isset($_POST['update_users'])){
     <!--<link rel="stylesheet" href="style.css">-->
 
 </head>
-
+<style>
+   
+   .nav-link{
+            color: white;
+        }
+        a{color: white;}
+    </style>
+</style>
 <body>
 
     <?php

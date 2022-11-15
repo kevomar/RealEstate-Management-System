@@ -21,11 +21,16 @@ include 'config.php';
             border-radius: 100px;
             float: left;
         }
+
+        .nav-link{
+            color: white;
+        }
+        a{color: white;}
     </style>
 
 
     <nav class="navbar navbar-expand-sm navbar-light justify-content-between"
-        style="background-color: #e3f2fd; height: 18vh; margin-bottom: 0;">
+        style="background-color: #272075; height: auto; margin-bottom: 0; color: white;">
         <div class="container-fluid">
             <section class="logo" style="position: absolute; left: 0; margin-left: 15px;">
                 <a href="../software eng/"><img src="../software eng/rentals/WhatsApp Image 2022-10-04 at 23.06.02.jpeg"
@@ -62,7 +67,7 @@ include 'config.php';
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="home.php">Profile</a></li>
+                        <li><a href="../dxf/adminpage.php?">Profile</a></li>
                         <li><a href="booked-property.php">Booked Property</a></li>
                         <li><a href="logout.php">Log out</a></li>
                     </ul>

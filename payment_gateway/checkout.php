@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,6 +73,11 @@ if(mysqli_num_rows($userresult) > 0)
         <div class="payment-info">
           <h3>Payment made Successfully</h3>
           <form>
+            <label >Receipt ID:</label><input type="text" name="receiptID" value="" disabled>
+       <label>Name:</label> <input type="text" name="name" value="" disabled>
+       <label>Property value: </label><input type="text" name="value" disabled>
+       <label>Amount Paid:</label><input type="text" name="amount" value="" disabled>
+       <label>Balance</label><input type="text" name="balance" value="" disabled>
             <br><br>
             <input class="btn" type="submit" value="Proceed">
           </form>

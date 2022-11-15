@@ -34,7 +34,8 @@ body {
 }
 
 label {
-  display: block;
+  margin: 0px;
+  float: left;
 }
 /* Model Container */
 
@@ -74,7 +75,8 @@ label {
 .room {
   width: 50%;
   height: 100%;
-  /*background: url(https://images.unsplash.com/photo-1470274038469-958113db2384?auto=format&fit=crop&w=1875&q=80) no-repeat center center;*/
+  background: url(https://images.unsplash.com/photo-1470274038469-958113db2384?auto=format&fit=crop&w=1875&q=80)
+    no-repeat center center;
   background-size: cover;
   display: inline-block;
   vertical-align: top;
@@ -127,14 +129,15 @@ label {
   padding: 20px;
 }
 
-input[type="text"] {
+input {
   width: 100%;
-  padding: 8px 10px 10px;
-  margin: 15px 0;
+  padding: 6px 8px 8px;
+  margin: 5px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  float: right;
 }
 
 .btn {

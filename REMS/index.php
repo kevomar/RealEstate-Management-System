@@ -48,9 +48,10 @@
 </style>
 
 <body>
+    <?php include('../dxf/navbar.php');?>
     <div class="container" style="margin-left: 0; padding-left: 0;">
         <div class="header">
-            <h1>Admin</h1>
+
         </div>
         <div class="content">
             <div class="left-section">

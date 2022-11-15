@@ -73,10 +73,10 @@ include("navbar.php");
                 </a>
 
 
-                <a href="adminpage.php?viewproperties">
+                <!--<a href="adminpage.php?viewproperties">
                     <button class="listings">View Propeties
                     </button>
-                </a>
+                </a>-->
 
 
 
@@ -104,9 +104,9 @@ include("navbar.php");
                 elseif (isset($_GET['dashboard'])) {
                     include 'dashboard.php';
                 }
-                elseif(isset($_GET['viewproperties'])){
+                /*elseif(isset($_GET['viewproperties'])){
                     include 'viewproperties.php';
-                }
+                }*/
                 else {
                     include 'dashboard.php';
                 }
