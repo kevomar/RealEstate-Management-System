@@ -1,0 +1,11 @@
+input:read-only,textarea:read-only{
+    background-color: aquamarine;
+}
+
+p:read-only{
+    background-color: aquamarine;
+}
+
+
+
+di
