@@ -51,6 +51,12 @@
         color: white;
         text-align: center;
      }
+
+     .btn{
+        background: #272075;
+        color: white;
+        size: 1.15;
+     }
     </style>
 
 </head>
@@ -152,15 +158,12 @@
         <div class="section-item-container">
             <img src="rentals/pexels-expect-best-323780.jpg " class="section-bg" alt="">
             <div class="section-info">
-                <h1 class="title">book <span>now</span></h1>
+                <h1 class="btn btn-primary">book <span>now</span></h1>
                 <p class="info">shop for all favourites.</p>
             </div>
         </div>
     </section>
 
 </body>
-<footer>
-
-</footer>
 
 </html>

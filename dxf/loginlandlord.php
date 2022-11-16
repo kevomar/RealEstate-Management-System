@@ -12,6 +12,7 @@ if(isset($_POST['submit'])){
    $select = "SELECT * FROM `landlords` WHERE ld_email = '$ld_email' AND ld_password = '$ld_password'"; 
    $result = mysqli_query($conn, $select);
    if($ld_email == 'admin@admin.com' && $ld_password == 'admin'){
+      $_SESSION['admin'] = 'Admin';
       header('location:../REMS/index.php');
    }elseif(mysqli_num_rows($result) > 0){
       $row = mysqli_fetch_assoc($result);

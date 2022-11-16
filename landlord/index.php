@@ -1,3 +1,7 @@
+<?php session_start();
+$_SESSION['user_id'] = $$_GET['id'];;
+//$landlordid = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,26 +52,25 @@
 </style>
 
 <body>
-    <?php include('../dxf/navbar.php');?>
+    <?php //include('../dxf/navbar.php');?>
     <div class="container" style="margin-left: 0; padding-left: 0;">
         <div class=" header">
      
     </div>
     <div class="content">
         <div class="left-section">
-
-            <a href="index.php?dashboard"><button class="listings">Dashboard</button></a>
-
-
-            <a href="index.php?users"><button class="listings">Tenants</button></a>
+        <?php //echo '<script>alert("'.$landlordid.'")</script>';?> 
+            <a href="index.php?dashboard<?php //echo $landlordid ?>"><button class="listings">Dashboard</button></a>
 
 
-            <a href="index.php?newpropertyview"><button class="listings">Properties</button></a>
+            <a href="index.php?users<?php //echo $landlordid ?>"><button class="listings">Tenants</button></a>
 
-            <a href="index.php?appointments"><button class="listings">Appointments</button></a>
-            <a href="index.php?bookings"><button class="listings">Bookings</button></a>
-            <a href="index.php?payments"><button class="listings">Payments</button></a>
-            <a href="#"><button class="listings">Reviews</button></a>
+
+            <a href="index.php?newpropertyview<?php //echo $landlordid ?>"><button class="listings">Properties</button></a>
+
+            <a href="index.php?appointment=<?php// echo $landlordid ?>"><button class="listings">Appointments</button></a>
+            <a href="index.php?bookings<?php //echo $landlordid ?>"><button class="listings">Bookings</button></a>
+            <a href="index.php?payments<?php //echo $landlordid ?>"><button class="listings">Payments</button></a>
             <a href="../software eng/"><button class="listings">Logout</button></a>
 
         </div>

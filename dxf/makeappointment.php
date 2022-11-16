@@ -88,12 +88,12 @@ if (isset($_POST['submit'])) {
         echo "<script>window.open('adminpage.php?viewproperties','_self')</script>";
     }
 
-    $insert_appointment = "INSERT INTO appointments (u_id, pr_id, ld_id, ap_date, ap_status) VALUES ('$user_id', '$pr_id', '$ld_id', '$AppointmentDate', 0)";
+    $insert_appointment = "INSERT INTO appointments (u_id, pr_id, ld_id, ap_date, ap_status) VALUES ('$user_id', '$pr_id', '$ld_id', '$AppointmentDate', 1)";
     $run_appointment = mysqli_query($conn, $insert_appointment);
 
     if ($run_appointment) {
         echo "<script>alert('Appointment has been added!')</script>";
-        echo "<script>window.open('adminpage.php', '_self')</script>";
+        echo "<script>window.open('../dxf/listings.php', '_self')</script>";
     }
 }
 

@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
     $count = mysqli_num_rows($run_check_booking);
     if ($count > 0) {
         echo "<script>alert('Booking already scheduled for $date')</script>";
-        echo "<script>window.open('adminpage.php?viewproperties','_self')</script>";
+        echo "<script>window.open('./dxf/listings.php','_self')</script>";
     }
 
     $insert_booking = "INSERT INTO bookings (u_id, pr_id, ld_id, checkin, checkout,status) VALUES ('$user_id', '$pr_id', '$ld_id', '$checkin','$checkout', 0)";

@@ -2,6 +2,8 @@
 
 include 'config.php';
 session_start();
+$landlord_id = $_GET['id'];
+
 
 if(isset($_POST['add_users'])){
    $u_email = $_POST['u_email'];
@@ -145,7 +147,7 @@ if(isset($message)){
 
                 <tbody>
                     <?php
-                    $thylandlord = $_SESSION['user_id'];
+                    $thylandlord = $_GET['ld_id'];
 
             //get properties owned by landlord
             $getpropertyquery = "SELECT u_id from bookings where ld_id = $thylandlord";
